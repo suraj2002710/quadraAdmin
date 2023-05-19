@@ -1,0 +1,570 @@
+#result_list tr th {
+    color: #323a40;
+  }
+  
+  #pagination {
+    /* margin-left: 65%; */
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 40px;
+    color: #323a40;
+  }
+  #professionalss {
+    font-size: 28px;
+  }
+  
+  /* #testkar{
+      justify-content: space-between;
+  } */
+  
+  /* jhkljhkjhkjhj */
+  #imagesofI {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+  }
+  
+  #imageofdel {
+    position: absolute;
+    left: 40px;
+    z-index: 999;
+    background: #fff;
+    border-radius: 50%;
+    height: 26px;
+    width: 26px;
+    text-align: center;
+  }
+  label#imageofAdd {
+    position: absolute;
+    left: 2px;
+    z-index: 999;
+    background: #fff;
+    border-radius: 50%;
+    height: 26px;
+    width: 26px;
+    text-align: center;
+    top: -2px;
+    box-shadow: 0px 1px 3px #000;
+  }
+  #Ptagofimage {
+    /* font-weight: bolder;  */
+    font-size: 20px;
+    color: black;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 10px;
+    margin-left: 25px;
+  }
+  
+  #SaveButton {
+    border-radius: 4px;
+    padding: 0%;
+    padding: 8px 6px 8px 6px;
+    border: 0.5px solid rgb(129, 125, 125);
+    background-color: lightgray;
+  }
+  #allInputfields {
+    width: 200px;
+  }
+  /* .rmsc .dropdown-container{
+      width: 220px;
+  } */
+  /* #testkar{
+  
+      justify-content: space-between;
+  } */
+  /* #places{
+      margin: 40px 0 0 180px;
+  } */
+  .content-wrapper {
+    margin: 55px 0 0 225px;
+  }
+  
+  #archi_image {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+  #archi_image2 {
+    width: 40px;
+    height: 40px;
+  }
+  
+  /* 27-3-23 */
+  
+  table.table-quadra tr td,
+  table.table-quadra tr th {
+    vertical-align: middle;
+    padding: 5px;
+  }
+  #result_list th,
+  #result_list td {
+    border-bottom: 1px solid #ccc;
+    white-space: nowrap;
+  }
+  #result_list tr th {
+    padding-bottom: 20px;
+    white-space: nowrap;
+  }
+  .action-button {
+    text-align: center;
+  }
+  .action-button button {
+    background-color: transparent;
+    border: none;
+  }
+  
+  #tableRow:hover {
+    background: #c9c6c638 !important;
+  }
+  .Profile_Picture label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    padding-bottom: 15px;
+  }
+  .table-form-input lable {
+    display: block;
+    font-weight: 500;
+    padding-bottom: 10px;
+  }
+  .table-form-input input {
+    background: transparent;
+    padding: 10px;
+    width: 95%;
+    border: 1px solid #cacaca !important;
+    border-radius: 5px;
+  }
+  .professional_details_table {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .table-form-input {
+    width: 33%;
+    padding-bottom: 20px;
+  }
+  .table-form-email {
+    width: 50%;
+    font-weight: 500;
+    padding-bottom: 10px;
+  }
+  .table-form-email lable {
+    display: block;
+  }
+  .Profile_Picture {
+    width: 50%;
+    padding-bottom: 20px;
+    position: relative;
+  }
+  .react-tel-input .form-control {
+    width: 95%;
+    height: 43px;
+  }
+  .Profile_Picture lable {
+    font-weight: 500;
+    padding-bottom: 15px;
+  }
+  .table-form-input input {
+    border-bottom: 1px solid #cacaca !important;
+  }
+  .table-form-input .react-tel-input .flag-dropdown {
+    height: 100%;
+    top: 0px !important;
+  }
+  .table-form-input label {
+    display: block;
+    font-weight: 500;
+    padding-bottom: 10px;
+  }
+  .table-form-textarea {
+    width: 100%;
+  }
+  .table-form-textarea textarea {
+    width: 95%;
+    padding: 10px;
+    height: 150px;
+    border: 1px solid #cacaca !important;
+  }
+  .table-form-textarea label {
+    font-weight: 500;
+    padding-bottom: 10px;
+  }
+  .table-form-input .dropdown-container {
+    width: 95%;
+    z-index: 9999;
+  }
+  .table-form-btn {
+    background: #000;
+    color: #fff;
+    border: none;
+    height: 46px;
+    width: 150px;
+    font-weight: 500;
+    border-radius: 5px;
+    margin: 20px 0 40px 0;
+  }
+  .action-button {
+    display: flex;
+    justify-content: center;
+  }
+  .table-form-textarea lable {
+    display: block;
+    font-weight: 500;
+    padding-bottom: 20px;
+  }
+  .table-form-textarea input {
+    width: 95%;
+    padding: 10px;
+    /* height: 150px; */
+    border: 1px solid #cacaca !important;
+    margin-bottom: 20px;
+  }
+  .uplode-pic {
+    width: 100%;
+    display: flex;
+  }
+  td.field-message p {
+    margin-bottom: 0;
+  }
+  
+  /*---------------- Client----------- */
+  
+  td.akign-center button {
+    border: none;
+    background: transparent;
+  }
+  
+  /* ------------------Skills---------------- */
+  .extra-add-btn {
+    background: #000;
+    border: none;
+    color: #fff;
+    padding: 0px 25px;
+    line-height: 0;
+    height: 40px;
+    border-radius: 5px;
+  }
+  
+  /*--------3-28-23-----------*/
+  .Profile_Picture_section {
+    position: relative;
+  }
+  .Profile_Picture_section svg {
+    position: absolute;
+    left: 3px;
+    background: white;
+    height: 26px;
+    width: 26px;
+    padding: 3px;
+    border-radius: 50%;
+    box-shadow: 0px 1px 3px #000;
+  }
+  .delete-icon {
+    position: absolute;
+    top: 37px;
+    left: 3px;
+    box-shadow: 0px 1px 3px #000;
+  }
+  .delete-icon #imageofdel {
+    left: 0;
+    box-shadow: 0px 1px 3px #000;
+  }
+  .Profile_Picture_second #imageofAdd {
+    top: 38px;
+  }
+  .Profile_Picture_second #imageofdel {
+    background: #fff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    position: absolute;
+    left: 2px;
+    top: 38px;
+    box-shadow: 0px 1px 3px #000;
+  }
+  .rating_detail_modal .modal-dialog {
+    width: 500px;
+  }
+  .rating_detail_modal input {
+    width: 100% !important;
+    border: 1px solid;
+    border-radius: 2px !important;
+  }
+  .rating_detail_modal #Footerlinks2,
+  .rating_detail_modal #Footerlinks3 {
+    width: 100% !important;
+    margin-top: 10px;
+    border-radius: 4px;
+  }
+  .rating_detail_modal .MuiRating-root {
+    padding: 0px 0 0 0;
+  }
+  .add_subcategories_details_modal .modal-dialog.modal-dialog-centered {
+    width: 600px;
+  }
+  .sub_categories_one label {
+    background: #01b490;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    padding: 0px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sub_categories_details img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .sub_categories_one .sub_categories_details {
+    text-align: center;
+    position: relative;
+  }
+  .sub_categories_one label svg {
+    width: 24px;
+    margin-right: 10px;
+  }
+  .sub_categories_details svg {
+    position: absolute;
+    left: 50%;
+    transform: translate(24px, 0px);
+    background: white;
+    width: 26px;
+    height: 26px;
+    padding: 4px;
+    border-radius: 50%;
+    box-shadow: 0px 0px 2px #000;
+  }
+  .sub_categories_one {
+    padding: 40px 30px 40px 30px;
+    width: 50%;
+  }
+  
+  .sub_categories_main {
+    display: flex;
+    justify-content: space-between;
+  }
+  .architectural-select {
+    display: flex;
+    justify-content: space-between;
+  }
+  .architectural-select-one select {
+    height: 100%;
+    width: 96%;
+  }
+  .architectural-select-one {
+    width: 50%;
+    height: 40px;
+  }
+  .architectural-select-to {
+    width: 50%;
+    height: 40px;
+  }
+  .architectural-select-to input {
+    height: 100%;
+    width: 98%;
+    margin-left: 5px;
+  }
+  .architectural-select-one input {
+    width: 100%;
+    height: 40px;
+    padding-left: 10px;
+  }
+  .social_media_upload {
+    margin-top: 30px !important;
+    text-align: center;
+    margin: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+  }
+  .social_media_upload label {
+    cursor: pointer;
+    background: #01b490;
+    color: #fff;
+    width: 65%;
+    text-align: center;
+    margin-top: 20px;
+    padding: 0px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .social_media_upload label svg {
+    width: 24px;
+    margin-right: 10px;
+  }
+  .social_media_upload img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+  }
+  .sidebar nav ul.nav-compact {
+    padding-top: 30px;
+  }
+  .css-1to7aaw-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    color: #fff;
+    background-color: #32b8a0 !important;
+  }
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+    /*---------- 3-27-23 -----------*/
+    .content-wrapper {
+      margin: 0;
+    }
+    .content-wrapper > .content {
+      padding: 0;
+    }
+    .table-content {
+      margin-top: 60px;
+    }
+    .action-button {
+      display: flex;
+    }
+    .heading-me-outer h1.heading-me {
+      color: #444;
+      margin: 0;
+      font-size: 20px !important;
+    }
+    .table-form-input {
+      width: 100%;
+      padding-bottom: 10px;
+    }
+  
+    .table-form-input input {
+      width: 100%;
+    }
+    .uplode-pic {
+      flex-direction: column;
+    }
+    nav#pagination {
+      margin-left: 0px !important;
+    }
+  
+    /*----------3-28-23---------------*/
+    .heading-me-outer {
+      margin-top: 50px;
+    }
+    .rating_detail_modal .modal-dialog {
+      width: 350px;
+      margin: auto;
+    }
+    .add_subcategories_details_modal .modal-dialog.modal-dialog-centered {
+      width: 300px;
+      margin: auto;
+    }
+    .sub_categories_main {
+      flex-direction: column;
+    }
+    .sub_categories_one {
+      width: 100%;
+      padding: 20px 10px 40px 10px;
+    }
+  
+    .social_media_upload label {
+      width: 100%;
+    }
+    .client-responsive {
+      margin-top: 5px;
+    }
+  }
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    .sub_categories_one {
+      padding: 20px 15px;
+    }
+  }
+  
+  @media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .heading-me-outer h1.heading-me {
+      margin: 0;
+      font-size: 20px !important;
+    }
+    .action-button {
+      display: flex;
+    }
+    .table-form-input {
+      width: 50%;
+    }
+    .Profile_Picture {
+      width: 51%;
+    }
+  }
+  .education_select{
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #cacaca !important;
+
+  }
+  .uploadbtn{
+      margin-top: 12px;
+      font-size: 12px;
+      padding: 9px;
+      border: none;
+      background-color: #01b490;
+      border-radius: 30px;
+      max-width: 100px !important;
+  }
+  #btndiv{
+    display: flex;
+  }
+
+  #spantext{
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  .btndwnld{
+    width: 95%;
+    padding: 8px;
+    border: 1px solid #cacaca !important;
+  }
+  .btndwnld:hover{
+    background-color: #01b490;
+    transition: 0.5s;
+  }
+
+  #nodatafound{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #dwldlink{
+    border: 1px solid #cacaca !important;
+    padding: 7px;
+    display: flex;
+    border-radius: 4px;
+  }
+  .counteryselect{
+    border: 1px solid #ced4da;
+    padding: 7px;
+    width: 42%;
+    background-color: white;
+  }
+  .othereducation{
+    padding: 0px !important;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    color: black !important;
+    width: 54% !important;
+    margin-left: 17px;
+    outline: none;
+  }
+
+  .onlythis{
+   white-space: inherit !important  ; 
+   width: 500px !important;
+  }
+  
+  .showless{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+  }
