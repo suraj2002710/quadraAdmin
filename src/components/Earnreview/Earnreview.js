@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -16,14 +16,7 @@ import { Cookies } from 'react-cookie'
 import { createBrowserHistory } from "history"
 import { baseurl } from '../../Baseurl';
 import { ImUpload2 } from 'react-icons/im';
-import ReactPlayer from 'react-player'
-
-
-
-
-const Laststep = () => {
-
-    const regex = /\.(mp4|avi|mkv|mov|wmv|flv|)$/i;
+const Earnreview = () => {
 
     const history = createBrowserHistory()
     const cookie = new Cookies()
@@ -34,62 +27,65 @@ const Laststep = () => {
     const [page, setpage] = useState(querypage.get('page') ? parseInt(querypage.get('page')) : 1)
     const [counts, setcounts] = useState(0)
     const [id, setid] = useState(null)
-    const [professionallaststep, setprofessionallaststep] = useState([])
+    const [earnreviews, setearnreviews] = useState([])
     const localClients = JSON.parse(localStorage.getItem("adminLogin"))
     const [addmodalShow, setaddmodalShow] = useState(false)
-    const [addvideo, setaddvideo] = useState("")
+    const [addearnreviewsQuot, setaddearnreviewsQuot] = useState("")
+    const [addearnreviewsImage, setaddearnreviewsImage] = useState("")
     const [loading, setloading] = useState(true)
     const [temp, settemp] = useState(true)
-    const [editlaststep_video, seteditlaststep_video] = useState("")
 
-    const [editprofessionallaststep_video, seteditprofessionallaststep_video] = useState("")
-    const [professionallaststep_id, setprofessionallaststep_id] = useState("")
-    const [professionallaststepcreateloading, setprofessionallaststepcreateloading] = useState(false)
-    const [professionallaststepupdateloading, setprofessionallaststepupdateloading] = useState(false)
+    const [editearnreviewImages, seteditearnreviewimages] = useState("")
+    const [imgpreview, setimgpreview] = useState("")
+    const [editearnreviewQuot, seteditearnreviewQuot] = useState("")
+    const [earnreview_id, setearnreview_id] = useState("")
+    const [earnreviewcreateloading, setearnreviewcreateloading] = useState(false)
+    const [earnreviewupdateloading, setearnreviewupdateloading] = useState(false)
     const [open, setOpen] = useState(false);
     const [query, setquery] = useState("")
-    const [professionallaststepErrdisplay, setprofessionallaststepErrdisplay] = useState("none")
-    const [mediapreview, setmediapreview] = useState("")
+    const [earnreviewsErrdisplay, setearnreviewsErrdisplay] = useState("none")
     const navigate = useNavigate()
-    const video = useRef()
-    const getprofessionallaststep = async () => {
+    const getearnreviews = async () => {
         setloading(true)
-        const res = await axios.post(`${baseurl}/admin/page_media_fetch/`, {
-            ...localClients, page_type: "Professional_last_page", page_size: 10
+        const res = await axios.post(`${baseurl}/admin/earner_review_fetch/`, {
+            ...localClients, page: page, page_size: 10
         });
         console.log(res);
         if (res.data.status === "Success") {
             setloading(false)
             let data = res.data
-            setprofessionallaststep(data.data)
-            setcounts(Math.ceil(data.data.total_data / 10) ? Math.ceil(data.data.total_data / 10) : 1)
+            setearnreviews(data.data)
+            setcounts(Math.ceil(data.data.total_data / 10))
         }
         else {
             console.log("suraj");
-            setprofessionallaststep([])
+            setearnreviews([])
             setloading(false)
         }
     }
-    const professionallaststepcreate = async (e) => {
+    const earnreviewscreate = async (e) => {
         e.preventDefault()
-        if (!addvideo) {
-            setprofessionallaststepErrdisplay("block")
-        } else if (!addvideo) {
+        if (!addearnreviewsQuot) {
+            setearnreviewsErrdisplay("block")
+        } else if (!addearnreviewsQuot) {
             return false
         } else {
-            setprofessionallaststepcreateloading(true)
+            setearnreviewcreateloading(true)
+
+
             const formdata = new FormData()
             formdata.set("admin_id", localClients.admin_id)
             formdata.set("admin_token", localClients.admin_token)
-            formdata.set("media", addvideo)
-            formdata.set("page_type", "Professional_last_page")
-            const res = await axios.post(`${baseurl}/admin/page_media_add/`, formdata);
+            formdata.set("quote", addearnreviewsQuot)
+            formdata.set("image", addearnreviewsImage)
+
+            const res = await axios.post(`${baseurl}/admin/earner_review_add_update/`, formdata);
 
             console.log(res);
             if (res.data.status === "Success") {
                 console.log("suraj");
-                setprofessionallaststepcreateloading(false)
-                setaddvideo(null)
+                setearnreviewcreateloading(false)
+                setaddearnreviewsQuot(null)
                 settemp(false)
                 setaddmodalShow(false)
             }
@@ -102,38 +98,42 @@ const Laststep = () => {
     const handleClose = () => {
         setOpen(false);
     };
-    const professionallaststepdelete = async (id) => {
+    const earnreviewdelete = async (id) => {
 
-        const res = await axios.post(`${baseurl}/admin/page_media_delete/`, {
+        const res = await axios.post(`${baseurl}/admin/earner_review_delete/`, {
             ...localClients, id: id
         });
         console.log(res);
         if (res.data.status === "Success") {
             // settemp("temp")
-            getprofessionallaststep()
+            getearnreviews()
             setOpen(false)
         }
     }
     useEffect(() => {
         if (!query) {
-            getprofessionallaststep()
+            getearnreviews()
             settemp(true)
         }
     }, [page, temp])
 
     const show = () => setaddmodalShow(true)
     const handleclose = () => {
-        setaddvideo(null)
-        setprofessionallaststepcreateloading(false)
-        setprofessionallaststepErrdisplay("none")
+        setaddearnreviewsQuot(null)
+        setearnreviewcreateloading(false)
+        setearnreviewsErrdisplay("none")
         setaddmodalShow(false);
+        setimgpreview("")
+        setaddearnreviewsQuot("")
     }
 
     const handlecloseEdit = () => {
-        setprofessionallaststepupdateloading(false)
+        setearnreviewupdateloading(false)
         seteditmodalShow(false)
-        setprofessionallaststep_id("")
-
+        setearnreview_id("")
+        setimgpreview("")
+        seteditearnreviewimages("")
+        seteditearnreviewQuot("")
     }
     useEffect(() => {
         if (!token) {
@@ -144,50 +144,52 @@ const Laststep = () => {
 
     const sendpageinquery = (val) => {
         navigate({
-            pathname: '/dashboard/professionallaststep',
+            pathname: '/dashboard/earnreviews',
             search: `?page=${val}`
         })
     }
 
 
-    const professionallaststepingle_fetch = async (id) => {
-        const { data } = await axios.put(`${baseurl}/admin/page_media_fetch/`, {
-            ...localClients, id: id, page_type: "Professional_last_page"
+    const earnreviewSingle_fetch = async (id) => {
+        const { data } = await axios.put(`${baseurl}/admin/earner_review_fetch/`, {
+            ...localClients, id: id
         })
         console.log(data);
         if (data.status === "Success") {
-            setprofessionallaststep_id(data.data.id)
-            seteditlaststep_video(data.data.media)
-            // seteditprofessionallaststep_video(data.Data[0].media)
+            setearnreview_id(data.data.id)
+            seteditearnreviewQuot(data.data.quote)
+            seteditearnreviewimages(data.data.image)
         }
     }
 
-    const professionallaststep_edit = async (e) => {
+    const earnreview_edit = async (e) => {
         e.preventDefault()
-        if (editprofessionallaststep_video === "") {
-            setprofessionallaststepErrdisplay("block")
+        if (editearnreviewQuot === "") {
+            setearnreviewsErrdisplay("block")
         }
         else {
+
+            setearnreviewupdateloading(true)
+
             const formdata = new FormData()
             formdata.set("admin_id", localClients.admin_id)
             formdata.set("admin_token", localClients.admin_token)
-            formdata.set("media", editlaststep_video)
-            formdata.set("pages", "Professional_last_page")
-            formdata.set("id", professionallaststep_id)
-
-            setprofessionallaststepupdateloading(true)
-            const { data } = await axios.post(`${baseurl}/admin/page_media_update/`, formdata)
+            formdata.set("quote", editearnreviewQuot)
+            formdata.set("image", editearnreviewImages)
+            formdata.set("id", earnreview_id)
+            const { data } = await axios.post(`${baseurl}/admin/earner_review_add_update/`, formdata)
             console.log(data);
             if (data.status === "Success") {
                 seteditmodalShow(false)
-                setprofessionallaststepupdateloading(false)
-                setprofessionallaststep_id("")
+                setearnreviewupdateloading(false)
+                setearnreview_id("")
 
                 settemp(false)
             }
         }
     }
-  
+
+
 
     return (
         <>
@@ -196,7 +198,7 @@ const Laststep = () => {
                     <div className="row">
                         <div id="testkar" className="col-12 heading-me-outer d-flex align-items-center">
                             <h1 id="professionalss" className="h4  pr-3 mr-3 border-right heading-me">
-                                Professional Last Step
+                                earnreviews
                             </h1>
 
                             <div className="ms-auto">
@@ -208,17 +210,17 @@ const Laststep = () => {
                                             <span class="navbar-toggler-icon"></span>
                                         </button>
                                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                            {/*   
-                         <form class="d-flex" role="search">
-                         <input style={{ width: "250px" }} onChange={(e)=>{
-                           setquery(e.target.value)
-                           setpage(1)
-                             searchfilter(e.target.value)
-                             setloading(true)
-                           }} class="form-control me-2" type="search" placeholder="Search By Name" aria-label="Search" />
-                      
-                         </form>*/}
-                                            <button className='extra-add-btn ms-2' onClick={show}>Add Media</button >
+
+                                            {/* <form class="d-flex" role="search">
+                                                <input style={{ width: "250px" }} onChange={(e) => {
+                                                    setquery(e.target.value)
+                                                    setpage(1)
+                                                    searchfilter(e.target.value)
+                                                    setloading(true)
+                                                }} class="form-control me-2" type="search" placeholder="Search By Name" aria-label="Search" />
+
+                                            </form> */}
+                                            <button className='extra-add-btn ms-2' onClick={show}>Add Earnreviews</button >
                                         </div>
                                     </div>
                                 </nav>
@@ -241,7 +243,7 @@ const Laststep = () => {
                     <>
 
 
-                        {!professionallaststep.length ? (<>
+                        {!earnreviews.length ? (<>
                             <Typography id='nodatafound'>No Data Found</Typography>
                         </>) :
                             <div className="content">
@@ -263,13 +265,14 @@ const Laststep = () => {
                                                                 S No.
                                                             </th>
 
+
                                                             <th
                                                                 className="sortin"
                                                                 tabindex="0"
                                                                 rowspan="1"
                                                                 colspan="1"
                                                             >
-                                                                Media
+                                                                earnreviews
                                                             </th>
 
                                                             <th
@@ -282,27 +285,28 @@ const Laststep = () => {
                                                             </th>
                                                         </tr>
                                                         {
-                                                            professionallaststep.map((curEle, i) => {
-                                                                const { id, media, page } = curEle
+                                                            earnreviews.map((curEle, i) => {
+                                                                const { created_at, image, quote, id } = curEle
                                                                 // console.log(rating);
-                                                                let str = media.slice(50)
+
                                                                 return (
                                                                     <tr id="tableRow" key={i}>
 
                                                                         <td className="checkbox-select">
-                                                                            {/* {(page - 1) * 10 + i + 1} */} {i + 1}
+                                                                            {(page - 1) * 10 + i + 1}
                                                                         </td>
 
                                                                         <td className="checkbox-select">
 
-                                                                            {str.slice(str.length - 3) === 'mp4' || str.slice(str.length - 3) === 'mkv' || str.slice(str.length - 3) === 'avi' || str.slice(str.length - 3) === 'wmv' || str.slice(str.length - 3) === 'mov' ?
-                                                                                <ReactPlayer url={media} playIcon controls width={150} height={100} />
-                                                                                :
-                                                                                <div style={{ width: "100px", height: '100px' }}>
-                                                                                    <img src={media} alt='img' style={{ borderRadius: "50%", height: "100%", aspectRatio: "3/3" }} />
-                                                                                </div>
-                                                                            }
+                                                                            {quote?.slice(0, 1).toUpperCase() + quote?.slice(1, 25)}
 
+                                                                        </td>
+
+
+                                                                        <td>
+                                                                            <div style={{ width: "100px", height: '100px' }}>
+                                                                                <img src={image} alt='img' style={{ borderRadius: "50%", height: "100%", aspectRatio: "3/3" }} />
+                                                                            </div>
                                                                         </td>
                                                                         <td className="akign-center nowrap">
                                                                             <div style={{ display: "flex" }}>
@@ -310,7 +314,7 @@ const Laststep = () => {
                                                                                 }
                                                                                     onClick={(e) => {
                                                                                         setid(e.target.id)
-                                                                                        professionallaststepingle_fetch(e.target.id)
+                                                                                        earnreviewSingle_fetch(e.target.id)
                                                                                         seteditmodalShow(true)
                                                                                     }}
                                                                                 >
@@ -336,7 +340,6 @@ const Laststep = () => {
 
 
 
-
                                                     {/* update modal*/}
                                                     <Modal
                                                         show={editmodalShow}
@@ -346,42 +349,43 @@ const Laststep = () => {
                                                         size="lg"
                                                         aria-labelledby="contained-modal-title-vcenter"
                                                         centered
-                                                        backdrop="static"
                                                     >
                                                         <Modal.Header closeButton>
                                                             <Modal.Title id="contained-modal-title-vcenter">
-                                                                Details
+                                                                earnreviews Details
                                                             </Modal.Title>
                                                         </Modal.Header>
                                                         <Modal.Body>
-                                                            <form onSubmit={professionallaststep_edit}>
+                                                            <form onSubmit={earnreview_edit}>
 
-                                                                <input hidden id='Footerlinks1' type="text" value={professionallaststep_id} readOnly />
-                                                                {/* <label id='labelsinmodal'>professionallaststep</label> */}
-                                                                
-                                                                {regex.test(editlaststep_video) || regex.test(video?.current?.files[0]?.name) ?
-                                                                 <div style={{ width: "100px",margin:"auto" }}>
-                                                                    <ReactPlayer url={mediapreview ? mediapreview : editlaststep_video} playIcon controls width={150} height={100} /></div>
-                                                                    :
-                                                                    <div style={{ width: "100px", height: '100px',margin:"auto" }}>
-                                                                        <img src={mediapreview ? mediapreview : editlaststep_video} alt='img' style={{ borderRadius: "50%", height: "100%", aspectRatio: "3/3" }} />
-                                                                    </div>
+                                                                <input hidden id='Footerlinks1' type="text" value={earnreview_id} readOnly />
+                                                                <label id='labelsinmodal'>Enter Quote</label>
+                                                                <input id='Footerlinks1' type="text" value={editearnreviewQuot} onChange={(e) => {
+                                                                    seteditearnreviewQuot(e.target.value)
+                                                                    setearnreviewsErrdisplay("none")
                                                                 }
+                                                                } placeholder="Enter earnreview" />
 
-                                                               
+                                                                <label htmlFor="" className={earnreviewsErrdisplay}>Required</label>
+
+
+                                                                <label id='labelsinmodal' style={{marginTop:"10px"}}>Enter Image</label>
+
+                                                                <div style={{ width: "100px", height: '100px',margin:"auto" }}>
+                                                                    <img style={{ borderRadius: "50%", height: "100%", aspectRatio: "3/3" }} src={imgpreview ? imgpreview : editearnreviewImages} alt="img" /> </div>
                                                                 <div>
-                                                                    <input type="file" ref={video} hidden name="" id="vid" onChange={(e) => {
-                                                                        seteditprofessionallaststep_video(e.target.files[0])
-                                                                        seteditlaststep_video(e.target.files[0])
-                                                                        setmediapreview(URL.createObjectURL(e.target.files[0]));
+
+                                                                    <input type="file" hidden name="" id="vid" onChange={(e) => {
+                                                                        seteditearnreviewimages(e.target.files[0])
+                                                                        setimgpreview(URL.createObjectURL(e.target.files[0]))
                                                                     }} />
 
                                                                     <label htmlFor='vid' className='vides'><ImUpload2 size={40} />Upload Data</label>
+
                                                                 </div>
 
 
-                                                                <label htmlFor="" className={professionallaststepErrdisplay}>Required</label>
-                                                                <button id='Footerlinks2' type="submit">{professionallaststepupdateloading ? <Spinner
+                                                                <button id='Footerlinks2' type="submit">{earnreviewupdateloading ? <Spinner
                                                                     as="span"
                                                                     animation="border"
                                                                     size="sm"
@@ -403,12 +407,12 @@ const Laststep = () => {
                                                     >
                                                         <DialogContent>
                                                             <DialogContentText id="alert-dialog-slide-description">
-                                                                Are you sure you want to delete this Media files ?
+                                                                Are you sure you want to delete this earnreview ?
                                                             </DialogContentText>
                                                         </DialogContent>
                                                         <DialogActions>
                                                             <Button onClick={handleClose}>Cancel</Button>
-                                                            <Button onClick={() => professionallaststepdelete(id)}>Ok</Button>
+                                                            <Button onClick={() => earnreviewdelete(id)}>Ok</Button>
                                                         </DialogActions>
                                                     </Dialog>
                                                     {counts > 1 && <Pagination
@@ -431,7 +435,6 @@ const Laststep = () => {
                                     </div>
                                 </div>
                             </div>
-
                         }
                     </>
                 )
@@ -443,38 +446,36 @@ const Laststep = () => {
                 className="rating_detail_modal"
                 aria-labelledby="contained-modal-title-vcenter"
                 centered
-                backdrop="static"
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Add Media
+                        Add earnreviews
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <form onSubmit={professionallaststepcreate}>
+                    <form onSubmit={earnreviewscreate}>
+                        <label id='labelsinmodal'>Enter Quote</label>
+                        <input id='Footerlinks1' value={addearnreviewsQuot} placeholder="Enter New earnreviews" onChange={(e) => {
+                            setaddearnreviewsQuot(e.target.value)
+
+                            setearnreviewsErrdisplay("none")
+                        }} type="text" />
+ <label id='labelsinmodal' style={{marginTop:"10px"}}>Enter Image</label>
+                        {imgpreview ? <div style={{ width: "100px", height: '100px',margin:"auto" }}>
+                            <img src={imgpreview} alt='img' style={{ borderRadius: "50%", height: "100%", aspectRatio: "3/3" }} />
+                        </div> : ""}
+
                         <div>
-                            <input type="file" ref={video} hidden name="" id="vid" onChange={(e) => {
-                                setaddvideo(e.target.files[0])
-                                setmediapreview(URL.createObjectURL(e.target.files[0]))
+                           
+                            <input type="file" hidden name="" id="vid" onChange={(e) => {
+                                setaddearnreviewsImage(e.target.files[0])
+                                setimgpreview(URL.createObjectURL(e.target.files[0]))
                             }} />
 
-                            {video?.current?.files[0] ? regex.test(video?.current?.files[0]?.name) ?
-                             <div style={{ width: "100px",margin:"auto" }}>
-                                <ReactPlayer url={mediapreview} playIcon controls width={150} height={100} /></div>
-                                :
-                                <div style={{ width: "100px", height: '100px',margin:"auto" }}>
-                                    <img src={mediapreview} alt='img' style={{ borderRadius: "50%", height: "100%", aspectRatio: "3/3" }} />
-                                </div> : ""
-                            }
-
-{/* 
-                            {video?.current?.files[0]?.name ?
-                                <span className='nofile'>{video?.current?.files[0]?.name}</span> : ""} */}
                             <label htmlFor='vid' className='vides'><ImUpload2 size={40} />Upload Data</label>
                         </div>
-
-                        <label htmlFor="" className={professionallaststepErrdisplay}>Required</label>
-                        <button id='Footerlinks2' type='submit'>{professionallaststepcreateloading ? <Spinner
+                        <label htmlFor="" className={earnreviewsErrdisplay}>Required</label>
+                        <button id='Footerlinks2' type='submit'>{earnreviewcreateloading ? <Spinner
                             as="span"
                             animation="border"
                             size="sm"
@@ -486,8 +487,9 @@ const Laststep = () => {
                 </Modal.Body>
 
             </Modal>
+
         </>
     )
 }
 
-export default Laststep
+export default Earnreview

@@ -374,6 +374,14 @@ const Sidebar = () => {
                    <span>Last Step</span>
                  </NavLink>
                </li>
+
+               <li className="nav-item">
+                 <NavLink className="navlinkchild "  to={"/dashboard/earnreview"}>
+                   <MdQueryStats className="logoofsidebar"/>
+                   <span>Earn Review</span>
+                 </NavLink>
+               </li>
+
                 </ul>
               </li>
 

@@ -183,29 +183,7 @@ const Clienthelp = () => {
       }
     }
   }
-  const searchfilter = async (query) => {
-    const { data } = await axios.post(`${baseurl}/admin/static/search_all_clienthelp/`, {
-      ...localClients, query: query, page: page, page_size: 10
-    })
-    if (data.status === 'Success') {
-      console.log(data);
-      setclienthelp(data.data.final_data)
-      setcounts(Math.ceil(data.data.total_data / 10))
-      setloading(false)
-    } else {
-      setclienthelp([])
-      setcounts(0)
-      setloading(false)
-    }
-  }
-
-  useEffect(() => {
-    if (query) {
-      searchfilter(query)
-      settemp(true)
-    }
-  }, [page, temp])
-
+ 
   return (
     <>
       <div className="content border-bottom mb-2">

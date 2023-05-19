@@ -54,6 +54,7 @@ import LogPro from "./components/Professional/LogPro";
 import Professionalhelp from "./components/Help/Professionalhelp";
 import Clienthelp from "./components/Help/Clienthelp";
 import Laststep from "./components/Help/Laststep";
+import Earnreview from "./components/Earnreview/Earnreview";
 function App() {
   const history=createBrowserHistory()
 
@@ -116,6 +117,7 @@ console.log(cookie.get());
           <Route path="/dashboard/professionalhelp" element={<Professionalhelp/>} />
           <Route path="/dashboard/clienthelp" element={<Clienthelp/>} />
           <Route path="/dashboard/laststep" element={<Laststep/>} />
+          <Route path="/dashboard/earnreview" element={<Earnreview/>} />
 
 
 
